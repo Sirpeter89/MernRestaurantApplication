@@ -1,6 +1,9 @@
 import express from 'express'
 const router = express.Router()
 
+//every single route will use logger middleware
+router.use(logger)
+
 //routes read top to bottom
 
 router.get('/', (req, res) => {
@@ -42,8 +45,7 @@ router
         res.send('This would be for a route to delete')
     })
 
-
-const users = [ { name: "Kyle"}, { name: "Sally"}]
+const users = [{ name: 'Kyle' }, { name: 'Sally' }]
 //whenever you go to a route with an id parameter, run this code
 //this is a type of middleware, stuff that runs between the request being sent and the response being returned to the user
 //without next() it would infinetly load, because it would not go to the reponse functions above.
@@ -60,5 +62,10 @@ router.param('id', (req, res, next, id) => {
 //it would think /new would be an id, which is not what we want
 
 //always put static routes above dynamic ones.
+
+function logger(req, res, next) {
+    console.log(req.originalUrl)
+    next()
+}
 
 export default router

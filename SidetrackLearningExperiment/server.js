@@ -4,7 +4,10 @@ const app = express()
 
 app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => {
+//Middleware runs top to bottom, if we put this after the get request this wouldn't run when we access the index page
+// app.use(logger)
+
+app.get('/', logger, logger, logger, (req, res) => {
     console.log('Hello World')
     //Can send status codes
     // res.sendStatus(500)
@@ -21,5 +24,10 @@ app.get('/', (req, res) => {
 const userRouter = router
 
 app.use('/users', userRouter)
+
+function logger(req, res, next) {
+    console.log(req.originalUrl)
+    next()
+}
 
 app.listen(3000)
