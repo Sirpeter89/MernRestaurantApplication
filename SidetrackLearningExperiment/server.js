@@ -2,6 +2,9 @@ import express from 'express'
 import router from './routes/users.js'
 const app = express()
 
+//using middle ware to server static files
+app.use(express.static('public'))
+
 app.set('view engine', 'ejs')
 
 //Middleware runs top to bottom, if we put this after the get request this wouldn't run when we access the index page
