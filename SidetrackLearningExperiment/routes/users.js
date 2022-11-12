@@ -11,31 +11,45 @@ router.get('/', (req, res) => {
 })
 
 router.get('/new', (req, res) => {
-    res.send('User New Form')
+    // res.render("users/new", {firstName: "Test"})
+    res.render('users/new')
+    // res.send('User New Form')
 })
 
 router.post('/', (req, res) => {
-    res.send('Create User')
+    // res.send('Create User')
+    const isValid = false
+    if (isValid) {
+        users.push({ firstName: req.body.firstName })
+        res.redirect(`/users/${users.length - 1}`)
+    } else {
+        console.log('error')
+        res.render('users/new', { firstName: req.body.firstName })
+    }
+    // console.log(req.body.firstName)
+    // res.send('Hi')
 })
+
+
 
 //dynamic parameter urls
-router.get('/:id', (req, res) => {
-    console.log(req.user)
-    res.send(`Get user with id ${req.params.id}`)
-})
+// router.get('/:id', (req, res) => {
+//     console.log(req.user)
+//     res.send(`Get user with id ${req.params.id}`)
+// })
 
-router.put('/:id', (req, res) => {
-    res.send('This would be for a route to update')
-})
+// router.put('/:id', (req, res) => {
+//     res.send('This would be for a route to update')
+// })
 
-router.delete('/:id', (req, res) => {
-    res.send('This would be for a route to delete')
-})
+// router.delete('/:id', (req, res) => {
+//     res.send('This would be for a route to delete')
+// })
 
 //We can also do some fun chaining to remove redundancy
-router
-    .route(':/id')
+router.route('/:id')
     .get((req, res) => {
+        console.log(req.user)
         res.send(`Get user with id ${req.params.id}`)
     })
     .put((req, res) => {
