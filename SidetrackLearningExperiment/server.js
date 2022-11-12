@@ -4,7 +4,10 @@ const app = express()
 
 //using middle ware to server static files
 app.use(express.static('public'))
+//allows us to process req body data
 app.use(express.urlencoded({extended: true}))
+//allows us to process json information from body in requests
+app.use(express.json())
 
 app.set('view engine', 'ejs')
 

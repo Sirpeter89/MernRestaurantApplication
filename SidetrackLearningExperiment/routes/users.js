@@ -7,6 +7,7 @@ router.use(logger)
 //routes read top to bottom
 
 router.get('/', (req, res) => {
+    console.log(req.query.name)
     res.send('User List')
 })
 
