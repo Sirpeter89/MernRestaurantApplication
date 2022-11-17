@@ -46,7 +46,8 @@ function App() {
 
       <div className="container mt-3">
         <Routes>
-          {/* <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
+          <Route exact path="/" element={RestaurantsList} />
+          <Route exact path="/restaurants" element={RestaurantsList} />
           <Route
             path="/restaurants/:id/review"
             render={(props) => (
@@ -64,7 +65,7 @@ function App() {
             render={(props) => (
               <Login {...props} login={login} />
             )}
-          /> */}
+          />
         </Routes>
       </div>
     </div>
