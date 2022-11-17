@@ -2,17 +2,17 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import AddReview from "./components/add-review";
-import Restaurant from "./components/restaurants";
+// import AddReview from "./components/add-review";
+// import Restaurant from "./components/restaurants";
 import RestaurantsList from "./components/restaurants-list";
-import Login from "./components/login";
+// import Login from "./components/login";
 
 function App() {
   const [user, setUser] = React.useState(null);
 
-  async function login(user = null) {
-    setUser(user);
-  }
+  // async function login(user = null) {
+  //   setUser(user);
+  // }
 
   async function logout() {
     setUser(null)
@@ -46,9 +46,9 @@ function App() {
 
       <div className="container mt-3">
         <Routes>
-          <Route exact path="/" element={RestaurantsList} />
-          <Route exact path="/restaurants" element={RestaurantsList} />
-          <Route
+          <Route exact path="/" element={<RestaurantsList />} />
+          <Route exact path="/restaurants" element={<RestaurantsList />} />
+          {/* <Route
             path="/restaurants/:id/review"
             render={(props) => (
               <AddReview {...props} user={user} />
@@ -65,7 +65,7 @@ function App() {
             render={(props) => (
               <Login {...props} login={login} />
             )}
-          />
+          /> */}
         </Routes>
       </div>
     </div>
